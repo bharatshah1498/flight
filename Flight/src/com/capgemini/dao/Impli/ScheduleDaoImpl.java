@@ -5,8 +5,13 @@ import com.capgemini.entities.Airport;
 import com.capgemini.entities.Flight;
 import com.capgemini.entities.Schedule;
 import com.capgemini.entities.ScheduledFlight;
+import com.capgemini.service.Impli.AirportServiceImpl;
+import com.capgemini.service.Impli.IFlightServiceImpl;
+import com.capgemini.service.Interface.IAirportService;
+import com.capgemini.service.Interface.IFlightService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +19,23 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
 	static
 	{
-		
+		IFlightService flightService = new IFlightServiceImpl(new FlightDaoImpl());
+        IAirportService airportService = new AirportServiceImpl(new AirportDaoImpl());
+        Flight f1 = flightService.viewFlight(166001);
+        Airport sourceAirport = airportService.viewAirport("IGIA");
+        Airport destinationAirport = airportService.viewAirport("CSIA");
+        LocalDateTime at = LocalDateTime .parse("2018-12-30T19:34:50.63");
+        LocalDateTime dt = LocalDateTime .parse("2018-12-30T21:45:23.35");
+        Schedule sch = new Schedule(sourceAirport, destinationAirport, at, dt);
+        scheduledFlightList.add(new ScheduledFlight(f1,125,sch));
+        
+        f1 = flightService.viewFlight(166002);
+        sourceAirport = airportService.viewAirport("IGIA");
+        destinationAirport = airportService.viewAirport("CSIA");
+        at = LocalDateTime .parse("2019-01-10T09:34:50.63");
+        dt = LocalDateTime .parse("2019-01-10T11:45:23.35");
+        sch = new Schedule(sourceAirport, destinationAirport, at, dt);
+        scheduledFlightList.add(new ScheduledFlight(f1,110,sch));
 	}
 	
 	@Override

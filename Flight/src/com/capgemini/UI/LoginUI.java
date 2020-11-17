@@ -42,8 +42,6 @@ public class LoginUI {
 
     public static void main(String[] args)
     {
-        //Connection con = MyDBConnection.getConnection();
-        //LoginUI ui = new LoginUI();
         LoginUI.runUi();
 
     }
@@ -84,16 +82,17 @@ public class LoginUI {
                 System.out.println("Do you want to signUp");
                 System.out.println("Enter the userId");
                 int i = sc.nextInt();
+                sc.nextLine();
                 System.out.println("Enter the UserName :");
-                String name = sc.next();
+                String name = sc.nextLine();
                 System.out.println("Enter the password");
-                String pass1 = sc.next();
+                String pass1 = sc.nextLine();
                 System.out.println("Enter the UserPhone :");
                 long phone = sc.nextLong();
+                sc.nextLine();
                 System.out.println("Enter the Email :");
-                String email = sc.next();
-                System.out.println("Enter the userType either C or A");
-                String userType = sc.next();
+                String email = sc.nextLine();
+                String userType = "C";
                 Users u1 = new Users(i, name, pass1, phone, email, userType);
                 us1.addUser(u1);
                 System.out.println("New user created");
@@ -105,6 +104,7 @@ public class LoginUI {
                 return;
             default:
                 System.out.println("Invalid Choice");
+                runUi();
                 break;
         }
 
@@ -139,12 +139,14 @@ public class LoginUI {
                 IFlightService serviceFlight1 = new IFlightServiceImpl(new FlightDaoImpl());
                 System.out.println("Enter the flight number");
                 int fn = sc.nextInt();
+                sc.nextLine();
                 System.out.println("Enter the flight model");
-                String fm = sc.next();
+                String fm = sc.nextLine();
                 System.out.println("Enter the flight seat capacity");
                 int fsc = sc.nextInt();
+                sc.nextLine();
                 System.out.println("Enter the flight carrier name");
-                String fcn = sc.next();
+                String fcn = sc.nextLine();
                 Flight f = new Flight(fn, fm, fsc, fcn);
                 serviceFlight1.addFlight(f);
                 displayAdminPanel(user);
@@ -154,12 +156,14 @@ public class LoginUI {
                 IFlightService serviceFlight2 = new IFlightServiceImpl(new FlightDaoImpl());
                 System.out.println("Enter the  Flight number which is to be modify");
                 int fn1 = sc.nextInt();
+                sc.nextLine();
                 System.out.println("Enter the new flight model");
-                String fm1 = sc.next();
+                String fm1 = sc.nextLine();
                 System.out.println("Enter the new seat Capacity");
                 int sc1 = sc.nextInt();
+                sc.nextLine();
                 System.out.println("Enter the new Flight carrier name");
-                String fcn1 = sc.next();
+                String fcn1 = sc.nextLine();
                 Flight f1 = new Flight(fn1, fm1, sc1, fcn1);
                 serviceFlight2.modifyFlight(f1);
                 displayAdminPanel(user);
@@ -220,11 +224,11 @@ public class LoginUI {
                 String destinationAirportCode = sc.nextLine();
                 Airport destinationAirport = airportService.viewAirport(destinationAirportCode);
                 
-                System.out.println("Enter arrival date time");
+                System.out.println("Enter arrival date time [Format : \"2020-12-11T09:30:12.34\"]");
                 String arrivalDateTime=sc.nextLine();
                 LocalDateTime at = LocalDateTime .parse(arrivalDateTime);
                 
-                System.out.println("Enter departure date time");
+                System.out.println("Enter departure date time [Format : \\\"2020-12-11T09:30:12.34\\\"]");
                 String departureDateTime=sc.nextLine();
                 LocalDateTime dt = LocalDateTime .parse(departureDateTime);
                 
@@ -242,7 +246,7 @@ public class LoginUI {
                 
             case 8:
                 ScheduleFlightServices serviceScheduleFlight3 = new ScheduleFlightServicesImpl(new ScheduleDaoImpl());
-                System.out.println("Enter the  ScheduleFlight Id which is to be Delete");
+                System.out.println("Enter the Flight Id whose schedule is to be Delete");
                 int scf3 = sc.nextInt();
                 sc.nextLine();
                 serviceScheduleFlight3.deleteScheduledFlight(scf3);
@@ -320,6 +324,7 @@ public class LoginUI {
                 sc.nextLine();
                 
                 List<Passenger> list = new ArrayList<>();
+               
                 for (int i=0; i<noOfpassengers; i++) {
                 	
                 	String genNum1 = Double.toString(Math.random()).substring(3,11);

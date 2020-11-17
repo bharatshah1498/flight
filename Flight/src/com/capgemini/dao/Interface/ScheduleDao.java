@@ -11,7 +11,7 @@ import com.capgemini.entities.ScheduledFlight;
 
 public interface ScheduleDao {
 
-	List<ScheduledFlight> scheduledFlightList = new ArrayList<>();
+	static List<ScheduledFlight> scheduledFlightList = new ArrayList<>();
 	
 	ScheduledFlight scheduleFlight(ScheduledFlight scheduleFlight);
 	List<ScheduledFlight> viewScheduledFlights(Airport source, Airport dest, LocalDate date);

@@ -46,7 +46,7 @@ public class BookingServiceImpl implements IBookingService {
 
     @Override
     public Booking viewBooking(int i) {
-        if(i<0) {
+        if(i>0) {
             Booking b = store.viewBooking(i);
             return b;
         }
@@ -63,7 +63,7 @@ public class BookingServiceImpl implements IBookingService {
 
     @Override
     public void deleteBooking(int i) {
-        if(i<0)
+        if(i>0)
         {
             store.deleteBooking(i);
         }

@@ -73,9 +73,12 @@ public class Booking {
 	
 	@Override
 	public String toString() {
-		return "Booking [bookingId=" + bookingId + ", userId=" + userId + ", bookingDate=" + bookingDate
-				+ ", passengerList=" + passengerList + ", ticketCost=" + ticketCost + ", flight=" + flight
-				+ ", noOfPassengers=" + noOfPassengers + "]";
+		return "Booking {bookingId=" + bookingId + ",\n"
+				+ "\t User=" + userId + ",\n"
+				+ "\t bookingDate=" + bookingDate + ",\n"
+				+ "\t passengerList=" + passengerList + ",\n"
+				+ "\t ticketCost=" + ticketCost + ",\n"
+				+ "\t noOfPassengers=" + noOfPassengers + "}";
 	}
 	
 }
